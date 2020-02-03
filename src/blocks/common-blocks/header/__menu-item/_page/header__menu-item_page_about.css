@@ -1,0 +1,7 @@
+.header__menu-item_page_about:first-of-type:hover::after {
+  background-color: #1A1B22;
+}
+  
+.header__menu-item_page_about:last-of-type:hover::after {
+  background-color: #1A1B22;
+}

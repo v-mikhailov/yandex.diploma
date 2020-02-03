@@ -1,0 +1,27 @@
+.stack__title {
+  font-family: 'Robotoslab', sans-serif;
+  font-weight: normal;
+  font-size: 30px;
+  color: #1A1B22;
+
+  width: 288px;
+  margin-left: auto;
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 1023px) and (min-width: 544px) {
+  .stack__title {
+    margin-left: 40px;
+    margin-right: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .stack__title {
+    width: 344px;
+    font-size: 40px;
+    margin: 0;
+  }
+}

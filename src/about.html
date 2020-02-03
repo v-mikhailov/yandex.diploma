@@ -1,16 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Cервис для анализа происходящих в мире событий">
+    <meta name="author" content="Vladimir Mikhailov">
     <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.about.css %>">
-    <title>about</title>
+    <title>NewsAnalyzer</title>
+    <link rel="icon" href="<%=require('./images/favicon.png').default%>" sizes="any" type="image/png">
 </head>
-<body>
-    <h1>Вторая станица сайта</h1>
-    <a href="./index.html">вернуться на первую</a>
-    <p>тест</p>
-    <script src="<%= htmlWebpackPlugin.files.chunks.about.entry %>"></script>
+<body class="body">
+  <div class="page-container">
+    <header class="header header_border-color_black">
+      <span class="header__title header__title_page_about"><a href="./index.html" class="link  link_color_black">NewsAnalyzer</a></span>
+        <nav class="header__nav">
+          <ul class="header__menu-items">
+            <li class="header__menu-item header__menu-item_page_about"><a href="./index.html" class="link link__hover_page_about">Главная</a></li>
+            <li class="header__menu-item header__menu-item_page_about"><a href="./about.html" class="link link__hover_page_about">О проекте</a></li>
+          </ul>
+        </nav>
+    </header>
+    <main>
+      <section class="clients">
+        <div class="clients__container">
+          <h1 class="clients__title">Клиентам</h1>
+          <p class="clients__text"> 
+            Этот сайт — дипломный проект студента Яндекс.Практикума.
+            Его цель — показать, чему научился студент, какими технологиями
+            владеет.
+          </p>
+          <p class="clients__text">
+            Вёрстка сайта выполнена по методологии БЭМ. Это делает
+            сайт гибким и масштабируемым. Кроме того, добавлять новые страницы
+            и функциональность проще и быстрее, чем в проектах, выполненных
+            по другим методологиям. Также сайт проще и дешевле поддерживать.
+          </p>
+          <p class="clients__text">
+            Карточки с новостями приходят с сервера и обрабатываются асинхронно.
+            То есть сайт продолжает работать, пока от сервера приходит ответ.
+            Это повышает удобство использования сервиса.
+          </p>
+          <p class="clients__text">
+            При создании проекта была использована сборка технологией Webpack.
+            Это современный подход к разработке сайтов. Код оптимизируется,
+            а значит, сайт работает быстрее. Также сайт работает в старых браузерах.
+            Даже если посетители — пользователи старых операционных систем,
+            у них не будет проблем с отображением. А значит, потенциальная аудитория
+            возрастает.
+          </p>
+          <p class="clients__text">
+            Проект был проверен экспертами Яндекс.Практикума.
+            Если вашему бизнесу нужен сайт, мы рекомендуем обратиться к этому студенту.
+          </p>
+        </div>
+      </section>
+      <section class="stack">
+        <div class="stack__flex-contanier">
+          <h2 class="stack__title">Используемые технологии</h2>
+          <div class="stack__container">
+            <div class="stack__item">
+                <span class="stack__name">HTML</span>
+                <img src="<%=require('./images/html.svg').default%>" alt="логотип HTML5" class="stack__img">
+            </div>
+            <div class="stack__item">
+              <span class="stack__name">CSS</span>
+              <img src="<%=require('./images/css.svg').default%>" alt="логотип CSS3" class="stack__img">
+            </div>
+            <div class="stack__item">
+              <span class="stack__name">Java Script</span>
+              <img src="<%=require('./images/js.svg').default%>" alt="логотип Java Script" class="stack__img">
+            </div>
+            <div class="stack__item">
+              <span class="stack__name">Webpack</span>
+              <img src="<%=require('./images/webpack.svg').default%>" alt="логотип Webpack" class="stack__img">
+            </div>
+          </div>     
+        </div>
+      </section>
+      <section class="author">
+        <div class="author__flex-container">
+          <div class="author__pic"></div>
+          <div class="author__text-container">
+            <h2 class="author__title">Об авторе</h2>
+            <p class="author__text"> 
+              Это блок с описанием автора проекта.
+              Здесь следует указать, как вас зовут, чем вы занимаетесь,
+              какими технологиями разработки владеете.
+            </p>
+            <p class="author__text">
+              Также можно рассказать о процессе обучения в Практикуме,
+              чему вы тут научились, и чем можете помочь потенциальным заказчикам.
+              Если хотите, оставьте свои контакты: email и телефон.
+              Так заказчики смогут с вами связаться.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="git-history">
+        <div class="git-history__contanier">
+          <div class="git-history__title-container">
+            <h2 class="git-history__title">История коммитов из GitHub</h2>
+            <h3 class="git-history__link"><a href="https://github.com/v-mikhailov/yandex.diploma/commits/master" class="link link_color_black">Открыть в GitHub</a></h3>
+          </div>
+          <div class="carousel">
+            <div class="card">
+              <a href="#" class="link">
+                <span class="card__date">14 августа, 2019</span>
+                <div class="card__container">
+                  <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
+                  <div class="card__name-container">
+                    <h3 class="card__name">Антон Дмитриев</h3>
+                    <span class="card__email">anton@yandex.ru</span>
+                  </div>
+                </div>
+                <p class="card__text">
+                  Emmet (formerly Zen Coding) is a web-developer’s toolkit that can greatly improve
+                  your HTML & CSS workflow.
+                </p>
+            </a>
+            </div>
+            <div class="card">
+              <a href="#" class="link">
+                <span class="card__date">14 августа, 2019</span>
+                <div class="card__container">
+                  <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
+                  <div class="card__name-container">
+                    <h3 class="card__name">Антон Дмитриев</h3>
+                    <span class="card__email">anton@yandex.ru</span>
+                  </div>
+                </div>
+                <p class="card__text">
+                  You can install this plugin directly from NetBeans Plugin Portal: in NetBeans, open Tools > Plugins > Available plugins and find and install Emmet.
+                </p>
+             </a>
+            </div>
+            <div class="card">
+              <a href="#" class="link">
+                <span class="card__date">14 августа, 2019</span>
+                <div class="card__container">
+                  <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
+                  <div class="card__name-container">
+                    <h3 class="card__name">Антон Дмитриев</h3>
+                    <span class="card__email">anton@yandex.ru</span>
+                  </div>
+                </div>
+                <p class="card__text">
+                  You can install this plugin directly from NetBeans Plugin Portal: in NetBeans, open Tools > Plugins > Available plugins and find and install Emmet.
+                </p>
+            </a>
+            </div>
+            <button class="button button_page_about">Открыть в GitHub</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <nav class="footer__nav">
+          <ul class="footer__items">
+            <li class="footer__item"><a href="./index.html" class="link link_color_black">Главная</a></li>
+            <li class="footer__item"><a href="./about.html" class="link link_color_black">О проекте</a></li>
+            <li class="footer__item"><a href="https://praktikum.yandex.ru" class="link link_color_black">Яндекс.Практикум</a></li>
+          </ul>
+        </nav>
+        <div class="footer__icons">
+          <a href="https://github.com/v-mikhailov"><img src="<%=require('./images/github.svg').default%>" alt="github icons"></a>
+          <a href="https://www.facebook.com/dekamka"><img src="<%=require('./images/facebook.svg').default%>" alt="facebook icons"></a>
+        </div>
+      </div>
+      <span class="footer__info">2019 Supersite</span>
+    </footer>
+  </div>
+  <script src="<%=htmlWebpackPlugin.files.chunks.about.entry%>"></script>
 </body>
 </html>

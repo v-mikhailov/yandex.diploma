@@ -1,0 +1,21 @@
+@import url('./_place/button_place_search.css');
+@import url('./_place/button_place_result.css');
+@import url('./_page/button_page_about.css');
+
+.button {
+  height: 56px;
+  padding: 0;
+  border-radius: 100px;
+
+  font-size: 18px;
+  
+  font-family: 'Roboto';
+  font-weight: medium;
+  box-sizing: border-box;
+}
+
+@media screen and (min-width: 1024px) {
+  .button {
+    height: 64px;
+  }
+}

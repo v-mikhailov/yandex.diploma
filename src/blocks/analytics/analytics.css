@@ -1,0 +1,13 @@
+@import url('../../fonts/typo.css');
+
+@import url('./news/news.css');
+@import url('./analytics-table/analytics-table.css');
+
+/* common blocks */
+@import url('../common-blocks/page-container/page-container.css');
+@import url('../common-blocks/body/body.css');
+@import url('../common-blocks/header/header.css');
+@import url('../common-blocks/link/link.css');
+@import url('../common-blocks/author/author.css');
+@import url('../common-blocks/button/button.css');
+@import url('../common-blocks/footer/footer.css');
