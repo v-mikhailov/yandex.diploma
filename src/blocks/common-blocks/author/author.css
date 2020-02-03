@@ -1,0 +1,29 @@
+@import url('./__flex-container/author__flex-container.css');
+@import url('./__text-container/author__text-container.css');
+@import url('./__pic/author__pic.css');
+@import url('./__title/author__title.css');
+@import url('./__text/author__text.css');
+
+.author {
+  min-width: 320px;
+  background-color: #fff;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .author {
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .author {
+    padding-left: 7.2%;
+    padding-top: 80px;
+    padding-right: 15%;
+    padding-bottom: 80px;
+  }
+}

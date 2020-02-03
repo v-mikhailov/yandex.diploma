@@ -1,0 +1,27 @@
+.result__grid-container {
+  width: 288px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 13px;
+  
+  display: grid;
+  grid-template-columns: 288px;
+  grid-gap: 8px;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .result__grid-container {
+    width: 89.6%;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .result__grid-container {
+    width: 85.5%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    margin-bottom: 64px;
+  }
+}

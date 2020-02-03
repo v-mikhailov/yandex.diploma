@@ -1,0 +1,20 @@
+@import url('./__title-container/result__title-container.css');
+@import url('./__title/result__title.css');
+@import url('./__subtitle/result__subtitle.css');
+@import url('./__grid-container/result__grid-container.css');
+
+.result {
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 44px;  
+  box-sizing: border-box;
+
+  background-color: #f5f6f7
+}
+
+@media screen and (min-width: 1024px) {
+  .result {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}

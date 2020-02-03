@@ -1,0 +1,25 @@
+@import url('./__container/clients__container.css');
+@import url('./__title/clients__title.css');
+@import url('./__text/clients__text.css');
+
+
+.clients {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1023px) and (min-width: 544px) {
+  .clients {
+    padding-top: 30px;
+    padding-bottom: 26px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .clients {
+    padding-left: 104px;
+    padding-top: 80px;
+    padding-bottom: 94px;
+  }
+}

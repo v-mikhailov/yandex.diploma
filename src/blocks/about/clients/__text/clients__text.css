@@ -1,0 +1,17 @@
+.clients__text {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 35px;
+}
+
+.clients__text:last-of-type{
+  margin-bottom: 19px;
+}
+
+@media screen and (min-width: 1024px) {
+  .clients__text:last-of-type {
+    margin-bottom: 0;
+  }
+}

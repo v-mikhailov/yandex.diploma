@@ -1,0 +1,12 @@
+.background-container {
+  min-width: 320px;
+  background-image: url('../../../images/phone-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (min-width: 544px) {
+  .background-container {
+    background-image: url('../../../images/phone-background-ipad.png');
+  }
+}

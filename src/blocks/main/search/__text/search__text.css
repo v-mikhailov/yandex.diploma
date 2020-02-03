@@ -1,0 +1,21 @@
+.search__text {
+  margin-top: 0;
+  margin-bottom: 64px;
+  font-family: "Robotoslab";
+  font-weight: normal;
+  font-size: 20px;
+  color: #fff;
+}
+
+@media (max-width: 1023px) and (min-width: 544px) {
+  .search__text {
+    margin-bottom: 24px;
+    font-size: 18px;
+  }
+} 
+
+@media screen and (min-width: 1024px) {
+  .search__text {
+    margin-bottom: 64px;
+  }
+} 

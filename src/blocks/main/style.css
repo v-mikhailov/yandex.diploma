@@ -1,0 +1,20 @@
+@import url('../../fonts/typo.css');
+
+@import url('./search/search.css');
+@import url('./loading/loading.css');
+@import url('./circle-preloader/circle-preloader.css');
+@import url('./not-found/not-found.css');
+@import url('./result/result.css');
+@import url('./card/card.css');
+
+/* common blocks*/
+@import url('../common-blocks/page-container/page-container.css');
+@import url('../common-blocks/body/body.css');
+@import url('../common-blocks/link/link.css');
+@import url('../common-blocks/button/button.css');
+@import url('../common-blocks/background-container/background-container.css');
+@import url('../common-blocks/header/header.css');
+@import url('../common-blocks/author/author.css');
+@import url('../common-blocks/footer/footer.css');
+
+

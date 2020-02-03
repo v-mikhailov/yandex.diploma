@@ -1,0 +1,26 @@
+.footer__info {
+  display: block;
+
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+
+  color: #B6BCBF;
+}
+
+.footer__info::before {
+  content: "\00A9";
+  margin-right: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .footer__info {
+    width: 140px;
+    margin: 0;
+    order: -1;
+  }
+}

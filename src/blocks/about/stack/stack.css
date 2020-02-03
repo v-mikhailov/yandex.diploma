@@ -1,0 +1,26 @@
+@import url('./__flex-container/stack__flex-contanier.css');
+@import url('./__title/stack__title.css');
+@import url('./__container/stack__container.css');
+@import url('./__item/stack__item.css');
+@import url('./__name/stack__name.css');
+
+.stack {
+ padding-top: 32px;
+ padding-bottom: 52px;
+ background-color: #F5F6F7;
+ box-sizing: border-box;
+}
+
+@media (max-width: 1023px) and (min-width: 544px) {
+  .stack {
+    padding-top: 40px;
+    padding-bottom: 49px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .stack {
+    padding-top: 80px;
+    padding-bottom: 90px;
+  }
+}

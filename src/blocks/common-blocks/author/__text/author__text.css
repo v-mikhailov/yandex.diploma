@@ -1,0 +1,15 @@
+.author__text {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-style: 18px;
+  color: #1A1B22;
+}
+
+@media screen and (min-width: 1024px) {
+  .author__text:first-of-type {
+    margin-bottom: 35px;
+  }
+}

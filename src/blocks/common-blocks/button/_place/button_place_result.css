@@ -1,0 +1,14 @@
+.button_place_result {
+  display: block;
+  width: 288px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  border-style: none;
+  background-color: #fff;
+  color: #1A1B22;
+}
+
+.button_place_result:hover {
+  background-color: #e8e8e9;
+}

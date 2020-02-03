@@ -1,0 +1,32 @@
+.result__subtitle {
+  font-family: "Roboto", sans-serif;
+  font-weight: medium;
+  font-size: 18px;  
+
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.result__subtitle::after {
+  display: inline-block;
+  content: "";
+ 
+  width: 8px;
+  height: 13px;
+  margin-left: 10px;
+  vertical-align: middle;
+  background-image: url(../../../../images/arrow.svg);
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 544px) and (max-width: 767px) {
+  .result__subtitle {
+    width: 230px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .result__subtitle::after {
+    margin-left: 10px;
+  }
+}

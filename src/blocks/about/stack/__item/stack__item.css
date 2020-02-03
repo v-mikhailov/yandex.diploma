@@ -1,0 +1,15 @@
+.stack__item {
+  display: flex;
+  flex-direction: column;
+  margin-right: 65px;
+}
+
+.stack__item:nth-child(2n) {
+   margin-right: 0;
+}
+
+@media screen and (min-width: 544px) {
+  .stack__item {
+    margin-right: 0;
+  }
+}
