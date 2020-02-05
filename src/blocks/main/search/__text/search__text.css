@@ -1,7 +1,7 @@
 .search__text {
   margin-top: 0;
   margin-bottom: 64px;
-  font-family: "Robotoslab";
+  font-family: "Robotoslab", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 20px;
   color: #fff;
