@@ -1,0 +1,35 @@
+.result__title-container {
+  width: 92.5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 36px;
+}
+
+@media (max-width: 1023px) and (min-width: 544px) {
+  .result__title-container {
+    display: flex;
+
+      width: 89.6%;
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 0;
+
+      justify-content: space-between;
+      align-items: baseline;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .result__title-container {
+    display: flex;
+
+      width: 85.3%;
+      margin-right: auto;
+      margin-left: auto;
+      padding-left: 0;
+
+      justify-content: space-between;
+      align-items: baseline;
+  }
+}
+

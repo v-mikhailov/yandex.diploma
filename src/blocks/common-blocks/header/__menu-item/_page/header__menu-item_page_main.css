@@ -1,0 +1,7 @@
+.header__menu-item_page_main:first-of-type:hover::after {
+  background-color: #fff;
+}
+  
+.header__menu-item_page_main:last-of-type:hover::after {
+  background-color: #fff;
+}

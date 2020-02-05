@@ -1,0 +1,11 @@
+@import url('./_page/link__hover_page_about.css');
+@import url('./_page/link__hover_page_analytics.css');
+
+.link__hover {
+    color: #B6BCBF;
+}
+
+.link__hover:hover {
+    color: #fff;
+}
+

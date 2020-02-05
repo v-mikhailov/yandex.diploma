@@ -1,0 +1,24 @@
+.search__title {
+  font-family: 'Robotoslab', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 36px; 
+  color: #fff;
+
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 1023px) and (min-width: 544px) {
+  .search__title {
+    width: 385px;
+    margin-left: 3px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .search__title {
+    margin-left: 0;
+    margin-bottom: 32px;
+    font-size: 60px;
+  }
+}

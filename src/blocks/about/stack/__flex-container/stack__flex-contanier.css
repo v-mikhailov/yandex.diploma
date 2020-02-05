@@ -1,0 +1,9 @@
+@media screen and (min-width: 1024px) {
+  .stack__flex-contanier {
+    width: 76.7%;
+    margin-left: 104px;
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+  }
+}

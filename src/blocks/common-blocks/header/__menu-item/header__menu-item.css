@@ -1,0 +1,60 @@
+@import url('./_page/header__menu-item_page_about.css');
+@import url('./_page/header__menu-item_page_main.css');
+
+.header__menu-item {
+  font-family: Roboto, sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.header__menu-item:first-of-type:hover::after {
+  display: block;
+  position: absolute;
+  content: '';
+  margin-top: 13px;
+
+  width: 62px;
+  height: 3px;
+}
+
+.header__menu-item:last-of-type:hover::after {
+  display: block;
+  position: absolute;
+  content: '';
+  margin-top: 13px;
+
+  width: 73px;
+  height: 3px;
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .header__menu-item {
+    font-size: 18px;
+  }
+
+  .header__menu-item:first-of-type:hover::after {
+    margin-top: 15.5px;
+    width: 69px;
+  }
+  
+  .header__menu-item:last-of-type:hover::after {
+    margin-top: 15.5px;
+    width: 85px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .header__menu-item {
+    font-size: 18px;
+  }
+
+  .header__menu-item:first-of-type:hover::after {
+    margin-top: 23px;
+    width: 69px;
+  }
+  
+  .header__menu-item:last-of-type:hover::after {
+    margin-top: 23px;
+    width: 85px;
+  }
+}

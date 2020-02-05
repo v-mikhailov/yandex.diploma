@@ -1,0 +1,19 @@
+@import url('./__pic/not-found__img.css');
+@import url('./not-found__title/not-found__title.css');
+@import url('./not-found__text/not-found__text.css');
+
+
+.not-found {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .not-found {
+    display: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 86px;
+    padding-bottom: 80px;
+    background-color: #F5F6F7;
+  }
+}

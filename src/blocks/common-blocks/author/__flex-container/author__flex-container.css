@@ -1,0 +1,19 @@
+@media (max-width: 1023px) and (min-width: 768px) {
+  .author__flex-container {
+    display: flex;
+    width: 89.6%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .author__flex-container {
+    display: flex;
+    margin: 0;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

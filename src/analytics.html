@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Cервис для анализа происходящих в мире событий">
+  <meta name="author" content="Vladimir Mikhailov">
+  <title>NewsAnalyzer</title>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.analytics.css%>">
+  <link rel="icon" href="<%=require('./images/favicon.png').default%>" sizes="any" type="image/png">
+</head>
+<body class="body">
+  <div class="page-container">
+    <header class="header header_border-color_black">
+      <span class="header__title header__title_page_about"><a href="./index.html" class="link  link_color_black">NewsAnalyzer</a></span>
+      <nav class="header__nav">
+        <ul class="header__menu-items">
+          <li class="header__menu-item header__menu-item_page_about"><a href="./index.html" class="link link__hover_page_about">Главная</a></li>
+          <li class="header__menu-item header__menu-item_page_about"><a href="./about.html" class="link link__hover_page_about">О проекте</a></li>
+        </ul>
+      </nav>
+    </header>  
+    <main>
+      <section class="news">
+        <div class="news__container">
+          <nav class="news__menu">
+            <ul class="news__menu-list">
+              <li class="news__menu-item"><a href="./index.html" class="link link__hover_page_analytics">Главная</a></li>
+              <li class="news__menu-item">/</li>
+              <li class="news__menu-item"><a href="./analytics.html" class="link link_color_gray">Аналитика</a></li>
+            </ul>
+          </nav>
+          <h2 class="news__title">Вы спроисили:</h2>
+          <span class="news__title news__current-news">«Путешествия»</span>
+          <p class="news__count">Новостей за неделю: <span class="news__count news__number">34 324</span></p>
+          <p class="news__count">Упоминаний в заголовках: <span class="news__count news__number">235</span></p>
+        </div>
+      </section>
+      <section class="analytics-table">
+        <div class="analytics-table__container">
+          <h2 class="analytics-table__title">Аналитика по дням</h2>
+          <div class="analytics-table__header">
+            <span class="analytics-table__subtitle analytics-table__month">Дата<span class="abalytics-table__br">(август)</span></span>
+            <span class="analytics-table__subtitle analytics-table__count">Кол-во упоминаний</span>
+          </div>
+          <ul class="analytics-table__ruler">
+            <li class="analytics-table__ruler-item">0</li>
+            <li class="analytics-table__ruler-item">25</li >
+            <li class="analytics-table__ruler-item">50</li>
+            <li class="analytics-table__ruler-item">75</li>
+            <li class="analytics-table__ruler-item">100</li>
+          </ul>
+          <div class="analytics-table__flex-container">
+            <ul class="analytics-table__items-list">
+              <li class="analytics-table__day">19, пн</li>
+              <li class="analytics-table__day">20, вт</li>
+              <li class="analytics-table__day">21, ср</li>
+              <li class="analytics-table__day">22, чт</li>
+              <li class="analytics-table__day">23, пт</li>
+              <li class="analytics-table__day">24, сб</li>
+              <li class="analytics-table__day">25, вс</li>
+            </ul>
+            <ul class="analytics-table__items-list">
+              <li class="analytics-table__cell analytics-table__cell_day_mon">15</li>
+              <li class="analytics-table__cell analytics-table__cell_day_tue">18</li>
+              <li class="analytics-table__cell analytics-table__cell_day_wed">11</li>
+              <li class="analytics-table__cell analytics-table__cell_day_thu">39</li>
+              <li class="analytics-table__cell analytics-table__cell_day_fri">45</li>
+              <li class="analytics-table__cell analytics-table__cell_day_sat">73</li>
+              <li class="analytics-table__cell analytics-table__cell_day_sun">34</li>
+            </ul>
+          </div>
+          <ul class="analytics-table__ruler">
+            <li class="analytics-table__ruler-item">0</li>
+            <li class="analytics-table__ruler-item">25</li >
+            <li class="analytics-table__ruler-item">50</li>
+            <li class="analytics-table__ruler-item">75</li>
+            <li class="analytics-table__ruler-item">100</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <nav class="footer__nav">
+          <ul class="footer__items">
+            <li class="footer__item"><a href="./index.html" class="link link__hover_page_analytics">Главная</a></li>
+            <li class="footer__item"><a href="./about.html" class="link link__hover_page_analytics">О проекте</a></li>
+            <li class="footer__item"><a href="https://praktikum.yandex.ru" class="link link__hover_page_analytics">Яндекс.Практикум</a></li>
+          </ul>
+        </nav>
+        <div class="footer__icons">
+          <a href="https://github.com/v-mikhailov"><img src="<%=require('./images/github.svg').default%>" alt="github icons"></a>
+          <a href="https://www.facebook.com/dekamka"><img src="<%=require('./images/facebook.svg').default%>" alt="facebook icons"></a>
+        </div>
+      </div>
+      <span class="footer__info">2019 Supersite</span>
+    </footer>
+  </div>
+  <script src="<%=htmlWebpackPlugin.files.chunks.analytics.entry%>"></script>
+</body>
+</html>

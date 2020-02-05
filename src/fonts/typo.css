@@ -1,0 +1,20 @@
+@font-face {
+    src: url('./roboto-medium-webfont.woff') format('woff');
+    font-family: 'Roboto';
+    font-weight: medium;
+}
+@font-face {
+    src: url('./roboto-regular-webfont.woff') format('woff');
+    font-family: 'Roboto';
+    font-weight: normal;
+}
+@font-face {
+    src: url('./robotoslab-regular-webfont.woff') format('woff');
+    font-family: 'Robotoslab';
+    font-weight: normal;
+}
+@font-face {
+    src: url('./SourceSansPro-Regular.woff') format('woff');
+    font-family: 'SourceSansPro';
+    font-weight: normal;
+}

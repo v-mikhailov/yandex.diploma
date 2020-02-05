@@ -1,0 +1,8 @@
+@import url('./_color/link_color_balck.css');
+@import url('./_color/link_color_white.css');
+@import url('./_color/link_color_gray.css');
+@import url('./__hover/link__hover.css');
+
+.link {
+    text-decoration: none;
+}
