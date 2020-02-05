@@ -5,7 +5,7 @@
 @media (max-width: 1023px) and (min-width: 768px) {
   .git-history__link {
     display: inline;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
     font-size: 17px;
     margin: 0;
   }

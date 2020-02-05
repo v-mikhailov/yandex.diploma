@@ -7,13 +7,13 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: { 
-    main: './src/index.js',
-    about: './src/about.js',
-    analytics: './src/analytics.js'
+    main: './src/scripts/index.js',
+    about: './src/scripts/about.js',
+    analytics: './src/scripts/analytics.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: 'scripts/[name].[chunkhash].js'
   },
   module: {
     rules: [{
@@ -22,12 +22,12 @@ module.exports = {
       exclude: /node_modules/,
     },
     {
-      test: /\.(woff|woff2|ttf|otf|png|jpe?g|gif|svg)$/i,
+      test: /\.(png|jpe?g|gif|svg)$/i,
       use: [
         {
           loader: 'file-loader',
           options: {
-            name: '[name].[ext]'
+            name: 'images/[name].[ext]'
           }
         },
         {
@@ -40,9 +40,30 @@ module.exports = {
       ]
     },
     {
-      test: /\.css$/,
-      use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-    }
+      test: /\.(woff|woff2|ttf|otf)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[name]/[ext]'
+          }
+        }
+      ]
+    },
+    {
+      test: /\.css$/i,
+      use: [
+          'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            } 
+          },
+          'css-loader',
+          'postcss-loader'
+        ]
+      }
     ]
   },
   resolve: {
@@ -52,7 +73,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: 'styles/[name].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,

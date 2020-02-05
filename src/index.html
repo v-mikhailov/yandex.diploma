@@ -56,7 +56,8 @@
           <div class="card">
             <a href="#" class="link">
               <picture>
-                <source srcset="<%=require('./images/image_08.jpg').default%>" media="(min-width: 320px)">
+                <source srcset="<%=require('./images/image_08-pc.jpg').default%>" media="(min-width: 1024px)">
+                <source srcset="<%=require('./images/image_08-ipad.jpg').default%>" media="(min-width: 768px)">
                 <img src="<%=require('./images/image_08.jpg').default%>" alt="растение" class="card__img">
               </picture>
               <div class="card__container">
@@ -70,6 +71,7 @@
           <div class="card">
             <a href="#" class="link">
               <picture>
+                <source srcset="<%=require('./images/image_04-pc.jpg').default%>" media="(min-width: 1024px)">
                 <source srcset="<%=require('./images/image_04-ipad.jpg').default%>" media="(min-width: 768px)">
                 <img src="<%=require('./images/image_06.jpg').default%>" alt="листья" class="card__img">
               </picture>
@@ -84,7 +86,8 @@
           <div class="card">
             <a href="#" class="link">
               <picture>
-                <source srcset="<%=require('./images/image_07.jpg').default%>">
+                <source srcset="<%=require('./images/image_07-pc.jpg').default%>" media="(min-width: 1024px)">
+                <source srcset="<%=require('./images/image_07-ipad.jpg').default%>" media="(min-width: 768px)">
                 <img src="<%=require('./images/image_07.jpg').default%>" alt="листья" class="card__img">
               </picture>
               <div class="card__container">
@@ -122,9 +125,9 @@
       <div class="footer__container">
         <nav class="footer__nav">
           <ul class="footer__items">
-            <li class="footer__item"><a href="./index.html" class="link link_color_black">Главная</a></li>
-            <li class="footer__item"><a href="./about.html" class="link link_color_black">О проекте</a></li>
-            <li class="footer__item"><a href="https://praktikum.yandex.ru" class="link link_color_black">Яндекс.Практикум</a></li>
+            <li class="footer__item"><a href="./index.html" class="link link__hover_page_analytics">Главная</a></li>
+            <li class="footer__item"><a href="./about.html" class="link link__hover_page_analytics">О проекте</a></li>
+            <li class="footer__item"><a href="https://praktikum.yandex.ru" class="link link__hover_page_analytics">Яндекс.Практикум</a></li>
           </ul>
         </nav>
         <div class="footer__icons">
