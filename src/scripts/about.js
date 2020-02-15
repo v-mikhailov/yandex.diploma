@@ -3,6 +3,11 @@ import CommitCardList from './componets/CommitCardList';
 import CommitCard from './componets/CommitCard';
 import GitHubApi from './modules/GitHubApi';
 
+
+
+
+
+
 const commitCardList = new CommitCardList(document.querySelector('.carousel'), {CommitCard, GitHubApi});
 (async function f () {
   try {
@@ -16,5 +21,3 @@ const commitCardList = new CommitCardList(document.querySelector('.carousel'), {
     throw new Error(err);
   }
 })();
-
-
