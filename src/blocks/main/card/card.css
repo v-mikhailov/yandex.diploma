@@ -6,7 +6,9 @@
 @import url('./__news-source/card__news-source.css');
 
 .card {
+    position: relative;
     border-radius: 8px;
     box-sizing: border-box;
     background-color: #fff;
+    padding-bottom: 24px;
 }

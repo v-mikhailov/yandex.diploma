@@ -6,6 +6,7 @@
 @import url('./not-found/not-found.css');
 @import url('./result/result.css');
 @import url('./card/card.css');
+@import url('./error-message/error-message.css');
 
 /* common blocks*/
 @import url('../common-blocks/page-container/page-container.css');

@@ -30,9 +30,12 @@
           <p class="search__text">
             Введите в поиске любую тему и узнайте, насколько популярной она была в новостях за прошедшую неделю.
           </p>
-          <form action="#" method="GET" class="search__form">
+          <div class="error-message">
+            <p class="error-message__text">Нужно ввести ключевое слово</p>
+           </div> 
+          <form action="#" method="GET" class="search__form" name="searchForm" novalidate>
             <input type="text" name="query" id="search__input" placeholder="Котики" required>
-            <button class="button button_place_search">Искать</button>
+            <button class="button button_place_search" id="button__submit" name="bttn">Искать</button>
           </form>
         </div>
       </section>
@@ -53,51 +56,6 @@
           <h3 class="result__subtitle"><a href="./analytics.html" class="link link_color_black" >Посмотреть аналитику</a></h3>
         </div>
         <div class="result__grid-container">
-          <div class="card">
-            <a href="#" class="link">
-              <picture>
-                <source srcset="<%=require('./images/image_08-pc.jpg').default%>" media="(min-width: 1024px)">
-                <source srcset="<%=require('./images/image_08-ipad.jpg').default%>" media="(min-width: 768px)">
-                <img src="<%=require('./images/image_08.jpg').default%>" alt="растение" class="card__img">
-              </picture>
-              <div class="card__container">
-                <span class="card__date">2 августа, 2019</span>
-                <h2 class="card__title">Национальное достояние – парки</h2>
-                <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков...</p>
-                <span class="card__news-source">Лента.ру</span>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <a href="#" class="link">
-              <picture>
-                <source srcset="<%=require('./images/image_04-pc.jpg').default%>" media="(min-width: 1024px)">
-                <source srcset="<%=require('./images/image_04-ipad.jpg').default%>" media="(min-width: 768px)">
-                <img src="<%=require('./images/image_06.jpg').default%>" alt="листья" class="card__img">
-              </picture>
-              <div class="card__container">
-                <span class="card__date">2 августа, 2019</span>
-                <h2 class="card__title">Национальное достояние – парки</h2>
-                <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков...</p>
-                <span class="card__news-source">Медуза</span>
-              </div>
-            </a>
-          </div>
-          <div class="card">
-            <a href="#" class="link">
-              <picture>
-                <source srcset="<%=require('./images/image_07-pc.jpg').default%>" media="(min-width: 1024px)">
-                <source srcset="<%=require('./images/image_07-ipad.jpg').default%>" media="(min-width: 768px)">
-                <img src="<%=require('./images/image_07.jpg').default%>" alt="листья" class="card__img">
-              </picture>
-              <div class="card__container">
-                <span class="card__date">2 августа, 2019</span>
-                <h2 class="card__title">Национальное достояние – парки</h2>
-                <p class="card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков...</p>
-                <span class="card__news-source">РИА</span>
-              </div>
-            </a>
-          </div>
         </div>
         <button class="button button_place_result">Показать еще</button>
       </section>
@@ -135,9 +93,23 @@
           <a href="https://www.facebook.com/dekamka"><img src="<%=require('./images/facebook.svg').default%>" alt="facebook icons"></a>
         </div>
       </div>
-      <span class="footer__info">2019 Supersite</span>
+      <div class="footer__info-block">
+        <span class="footer__info">2019 Supersite.</span>
+        <span class="footer__copyright">Powered by <a href="https://newsapi.org/" class="link link_color_gray">Newsapi.org</a></span>
+      </div>
     </footer>
   </div>
+  <template id="js-newsCard">
+      <a href="#" class="link">
+        <img src="www.vk.com" alt="" class="card__img">
+        <div class="card__container">
+          <span class="card__date">18 апреля, 2011</span>
+          <h2 class="card__title">Cake</h2>
+          <p class="card__text">The cake is a lie</p>
+          <span class="card__news-source">GLaDOS</span>
+        </div>
+      </a>
+  </template>
   <script src="<%=htmlWebpackPlugin.files.chunks.main.entry%>"></script>
 </body>
 </html>

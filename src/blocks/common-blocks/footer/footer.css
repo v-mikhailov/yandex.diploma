@@ -3,7 +3,9 @@
 @import url('./__items/footer__items.css');
 @import url('./__item/footer__item.css');
 @import url('./__icons/footer__icons.css');
+@import url('./__info-block/footer__info-block.css');
 @import url('./__info/footer__info.css');
+@import url('./__copyright/footer__copyright.css');
 
 .footer {
   padding-top: 20px;

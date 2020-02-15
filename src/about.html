@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Cервис для анализа происходящих в мире событий">
     <meta name="author" content="Vladimir Mikhailov">
-    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.about.css %>">
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.about.css%>">
+    <link rel="stylesheet" href="../node_modules/flickity/dist/flickity.css" media="screen">
     <title>NewsAnalyzer</title>
     <link rel="icon" href="<%=require('./images/favicon.png').default%>" sizes="any" type="image/png">
 </head>
@@ -104,54 +105,10 @@
             <h3 class="git-history__link"><a href="https://github.com/v-mikhailov/yandex.diploma/commits/master" class="link link_color_black">Открыть в GitHub</a></h3>
           </div>
           <div class="carousel">
-            <div class="card">
-              <a href="#" class="link">
-                <span class="card__date">14 августа, 2019</span>
-                <div class="card__container">
-                  <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
-                  <div class="card__name-container">
-                    <h3 class="card__name">Антон Дмитриев</h3>
-                    <span class="card__email">anton@yandex.ru</span>
-                  </div>
-                </div>
-                <p class="card__text">
-                  Emmet (formerly Zen Coding) is a web-developer’s toolkit that can greatly improve
-                  your HTML & CSS workflow.
-                </p>
-            </a>
-            </div>
-            <div class="card">
-              <a href="#" class="link">
-                <span class="card__date">14 августа, 2019</span>
-                <div class="card__container">
-                  <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
-                  <div class="card__name-container">
-                    <h3 class="card__name">Антон Дмитриев</h3>
-                    <span class="card__email">anton@yandex.ru</span>
-                  </div>
-                </div>
-                <p class="card__text">
-                  You can install this plugin directly from NetBeans Plugin Portal: in NetBeans, open Tools > Plugins > Available plugins and find and install Emmet.
-                </p>
-             </a>
-            </div>
-            <div class="card">
-              <a href="#" class="link">
-                <span class="card__date">14 августа, 2019</span>
-                <div class="card__container">
-                  <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
-                  <div class="card__name-container">
-                    <h3 class="card__name">Антон Дмитриев</h3>
-                    <span class="card__email">anton@yandex.ru</span>
-                  </div>
-                </div>
-                <p class="card__text">
-                  You can install this plugin directly from NetBeans Plugin Portal: in NetBeans, open Tools > Plugins > Available plugins and find and install Emmet.
-                </p>
-            </a>
-            </div>
-            <button class="button button_page_about">Открыть в GitHub</button>
           </div>
+          <form action="https://github.com/v-mikhailov/yandex.diploma/commits/master" target="_blank">
+          <button class="button button_page_about">Открыть в GitHub</button>
+          </form>
         </div>
       </section>
     </main>
@@ -169,9 +126,29 @@
           <a href="https://www.facebook.com/dekamka"><img src="<%=require('./images/facebook.svg').default%>" alt="facebook icons"></a>
         </div>
       </div>
-      <span class="footer__info">2019 Supersite</span>
+      <div class="footer__info-block">
+        <span class="footer__info">2019 Supersite.</span>
+        <span class="footer__copyright">Powered by <a href="https://newsapi.org/" class="link link_color_gray">Newsapi.org</a></span>
+      </div>
     </footer>
   </div>
+  <template id="js-gitCard">
+    <a href="#" class="link">
+      <span class="card__date">14 августа, 2019</span>
+      <div class="card__container">
+        <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
+        <div class="card__name-container">
+          <h3 class="card__name">Антон Дмитриев</h3>
+          <span class="card__email">anton@yandex.ru</span>
+        </div>
+      </div>
+       <p class="card__text">
+        You can install this plugin directly from NetBeans Plugin Portal: in NetBeans, open Tools > Plugins > Available plugins and find and install Emmet.
+      </p>
+    </a>
+  </template>
+
+  <script src="../node_modules/flickity/dist/flickity.pkgd.min.js"></script>
   <script src="<%=htmlWebpackPlugin.files.chunks.about.entry%>"></script>
 </body>
 </html>

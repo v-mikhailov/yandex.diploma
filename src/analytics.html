@@ -52,7 +52,7 @@
             <li class="analytics-table__ruler-item">100</li>
           </ul>
           <div class="analytics-table__flex-container">
-            <ul class="analytics-table__items-list">
+            <ul class="analytics-table__items-list analytics-table__items-list_position_reverse" id="js-week">
               <li class="analytics-table__day">19, пн</li>
               <li class="analytics-table__day">20, вт</li>
               <li class="analytics-table__day">21, ср</li>
@@ -61,14 +61,14 @@
               <li class="analytics-table__day">24, сб</li>
               <li class="analytics-table__day">25, вс</li>
             </ul>
-            <ul class="analytics-table__items-list">
-              <li class="analytics-table__cell analytics-table__cell_day_mon">15</li>
-              <li class="analytics-table__cell analytics-table__cell_day_tue">18</li>
-              <li class="analytics-table__cell analytics-table__cell_day_wed">11</li>
-              <li class="analytics-table__cell analytics-table__cell_day_thu">39</li>
-              <li class="analytics-table__cell analytics-table__cell_day_fri">45</li>
-              <li class="analytics-table__cell analytics-table__cell_day_sat">73</li>
-              <li class="analytics-table__cell analytics-table__cell_day_sun">34</li>
+            <ul class="analytics-table__items-list" id="js-table-data">
+              <li class="analytics-table__cell analytics-table__cell_day_mon">0</li>
+              <li class="analytics-table__cell analytics-table__cell_day_tue">0</li>
+              <li class="analytics-table__cell analytics-table__cell_day_wed">0</li>
+              <li class="analytics-table__cell analytics-table__cell_day_thu">0</li>
+              <li class="analytics-table__cell analytics-table__cell_day_fri">0</li>
+              <li class="analytics-table__cell analytics-table__cell_day_sat">0</li>
+              <li class="analytics-table__cell analytics-table__cell_day_sun">0</li>
             </ul>
           </div>
           <ul class="analytics-table__ruler">
@@ -95,7 +95,10 @@
           <a href="https://www.facebook.com/dekamka"><img src="<%=require('./images/facebook.svg').default%>" alt="facebook icons"></a>
         </div>
       </div>
-      <span class="footer__info">2019 Supersite</span>
+      <div class="footer__info-block">
+        <span class="footer__info">2019 Supersite.</span>
+        <span class="footer__copyright">Powered by <a href="https://newsapi.org/" class="link link_color_gray">Newsapi.org</a></span>
+      </div>
     </footer>
   </div>
   <script src="<%=htmlWebpackPlugin.files.chunks.analytics.entry%>"></script>

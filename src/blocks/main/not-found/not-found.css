@@ -1,6 +1,7 @@
 @import url('./__pic/not-found__img.css');
-@import url('./not-found__title/not-found__title.css');
-@import url('./not-found__text/not-found__text.css');
+@import url('./__title/not-found__title.css');
+@import url('./__text/not-found__text.css');
+@import url('./_active/not-found_active.css');
 
 
 .not-found {
