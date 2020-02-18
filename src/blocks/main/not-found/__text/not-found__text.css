@@ -1,6 +1,6 @@
 .not-found__text {
   display: block;
-  width: 356px;
+  max-width: 356px;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 18px;

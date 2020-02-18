@@ -16,7 +16,6 @@ export default class SearchInput {
     this.addEventListener = this.addEventListener.bind(this);
     this.getFormValue = this.getFormValue.bind(this);
     this.activateError = this.activateError.bind(this);
-    this.deactivateError = this.deactivateError.bind(this);
 
     if (this.dependencies.Validation) {
       this.validation = new this.dependencies.Validation(this.domElement);
@@ -32,22 +31,25 @@ export default class SearchInput {
 
   async saveApiData() {
     try {
-      if (this.dependencies.NewsApi) {
-        const newsApi =  new this.dependencies.NewsApi(NEWS_API_KEY, this.getFormValue(), getPreviousDate(7), getCurrentDate());
-        this.togglePreloader()
+      const title = this.getFormValue();
+      if (this.dependencies.NewsApi && title !== false) {
+        const newsApi =  new this.dependencies.NewsApi(NEWS_API_KEY, title, getPreviousDate(7), getCurrentDate());
+        this.activatePreloader();
         const newsList = await newsApi.getNews();
         if (newsList.totalResults === 0) {
           this.activateNotFound();
-          this.togglePreloader()
-          throw new Error('ничего не найдено');
+          this.deactivatePreloader();
+        } else {
+          this.dataStorage.save(title, newsList);
+          this.clearInput(); 
+          this.deactivatePreloader()
         }
-        this.dataStorage.saveNewsTitle(this.getFormValue());
-        this.dataStorage.saveAllNews(newsList.articles);
-        this.dataStorage.saveNewsCount(newsList.totalResults);
-        this.clearInput(); 
-        this.togglePreloader()
+      } else {
+        this.activateError();
+        throw new Error('пустой запрос');
       }
     } catch (error) {
+      this.deactivatePreloader();
       throw new Error(error);
     }
   }
@@ -56,8 +58,7 @@ export default class SearchInput {
     this.deactivateError()
     const result = this.validation.sendForm();
     if (!result) {
-      this.activateError()
-      throw new Error('пустой запрос, нужно ввести ключевое слово');
+      return false;
     } else {
       this.dataStorage.deletePreviousData();
       return result;
@@ -88,8 +89,12 @@ export default class SearchInput {
     notFound.classList.remove('not-found_active');
   }
 
-  togglePreloader() {
+  activatePreloader() {
     const preloader = document.querySelector('.loading')
-    preloader.classList.toggle('loading_active')
+    preloader.classList.add('loading_active')
+  }
+  deactivatePreloader() {
+    const preloader = document.querySelector('.loading')
+    preloader.classList.remove('loading_active')
   }
 }

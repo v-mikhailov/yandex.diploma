@@ -8,7 +8,6 @@ import NewsCard from './componets/NewsCard';
 import NewsApi from './modules/NewsApi';
 import DataStorage from './modules/DataStorage';
 /* utils */
-/* constants */
 
 const newsCardList =  new NewsCardList(document.querySelector('.result'),
   {
@@ -16,6 +15,7 @@ const newsCardList =  new NewsCardList(document.querySelector('.result'),
     NewsCard,
   }
 );
+
 const searchInput = new SearchInput(document.forms.searchForm,
 {
   Validation,
@@ -33,6 +33,7 @@ searchInput.addEventListener('submit', event => {
       await searchInput.saveApiData();
       newsCardList.renderList(false);
     } catch (error) {
+      searchInput.activateNotFound();
       throw new Error(error)
     }
   })();

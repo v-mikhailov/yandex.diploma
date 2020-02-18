@@ -1,3 +1,5 @@
+import { data } from "flickity";
+
 // класс списка карточек новостей
 
 export default class NewsCardList {
@@ -13,6 +15,8 @@ export default class NewsCardList {
     if (this.dependencies.NewsCard) {
       this.newsCard = new this.dependencies.NewsCard(document.querySelector('#js-newsCard'));
     }
+
+    this.renderList = this.renderList.bind(this);
   }
 
   renderList(isShowMoreBttn) {
@@ -23,14 +27,13 @@ export default class NewsCardList {
     }
     this.clearNews();
     this.domElement.children.forEach(elem => {
-      if (elem.className === 'result__grid-container') {
-        const newsData = this.dataStorage.getSavedNews();
-        newsData.forEach((newsObj, index) => {
-          if (index < this._counter) {
-            elem.append(this.newsCard.renderCard(newsObj));
-          } 
-        })
-       
+        if (elem.className === 'result__grid-container') {
+          const newsData = this.dataStorage.getSavedNews();
+          newsData.forEach((newsObj, index) => {
+            if (index < this._counter) {
+              elem.append(this.newsCard.renderCard(newsObj));
+            } 
+          })
         if (this._counter >= newsData.length && newsData.length > 3) {
           this.removeShowMoreBttn() // еслии карточки законнчились, то кнопка "показать еще" удаляется, а при новом запросе отрисуется 3 карточки
           this._counter = 3;

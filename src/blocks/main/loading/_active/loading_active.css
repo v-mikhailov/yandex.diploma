@@ -1,11 +1,9 @@
-@media screen and (min-width: 1440px) {
-  .loading.loading_active {
-      display: block;
-      position: relative;
-      margin: 0;
-      min-height: 122px;
-      padding-top: 80px;
-      padding-bottom: 80px;
-      background-color: #F5F6F7;
-  }
+.loading.loading_active {
+  display: block;
+  position: relative;
+  margin: 0;
+  min-height: 122px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #F5F6F7;
 }

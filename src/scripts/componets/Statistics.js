@@ -5,15 +5,17 @@ export default class Statistics {
   constructor(titleBlock, dependencies = {}, utils = []) {
     this.titleBlock = titleBlock;
     this.dependencies = dependencies;
-    this.week = document.getElementById('js-week');
-    this.tableData = document.getElementById('js-table-data');
+    this.week = document.querySelector('#js-week');
+    this.tableData = document.querySelector('#js-table-data');
     this.getPreviousDate = utils[0];
     if (this.dependencies.DataStorage) {
       this.dataStorage = new this.dependencies.DataStorage();
     }
 
+
     this.allNews = this.dataStorage.getSavedNews();
     this.savedTitle = this.dataStorage.getSavedTitle()
+
     this.datesOfWeek = [];
   }
 
@@ -60,7 +62,6 @@ export default class Statistics {
       const amount = this._setCellData(elem, index)
       totalAmount = totalAmount + amount;
     })
-    console.log('общая сумма', totalAmount);
     this.tableData.children.forEach(elem => {
       const percent = (elem.textContent / totalAmount) * 100;
       elem.style.width = `${percent}%`;
@@ -108,7 +109,7 @@ export default class Statistics {
   }
 
   _setCellData(elem, index) {
-    let mention = this._dataForSpecificDay(elem, this.allNews);
+    const mention = this._dataForSpecificDay(elem, this.allNews);
     this.tableData.children[index].textContent = mention;
     return mention;
   }

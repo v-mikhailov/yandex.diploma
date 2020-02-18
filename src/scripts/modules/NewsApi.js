@@ -7,11 +7,10 @@ export default class NewsApi {
   }
 
   getResponseJson(data) {
-    console.log(data);
     if (data.ok) {
       return data.json();
     }
-    return Promise.reject(`Ошибка: ${data.status}`)
+    Promise.reject(`Ошибка: ${data.status}`)
   }
   
   async getNews() {
@@ -21,7 +20,6 @@ export default class NewsApi {
         authorization: this._apiKey
       },
     })
-    console.log(result);
     return this.getResponseJson(result)
   }
 }

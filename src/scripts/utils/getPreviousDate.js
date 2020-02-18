@@ -1,6 +1,6 @@
 export const getPreviousDate = (dayAgo, isStandart) => {
-  let data = new Date();
-  let from = data.setDate(data.getDate() - dayAgo);
+  const data = new Date();
+  const from = data.setDate(data.getDate() - dayAgo);
   if (isStandart) {
     return data 
   } else {

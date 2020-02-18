@@ -4,6 +4,7 @@ export default class NewsCard {
   constructor(template) {
     this.template = template;
   }
+  
   renderCard(newsObj) {
     const card = document.createElement('div');
     card.className = 'card';
