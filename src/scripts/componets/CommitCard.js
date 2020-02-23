@@ -1,29 +1,28 @@
 // класс карточки коммитов
+import { TRANSLATED_WORDS } from '../constants/TRANSLATED_WORDS';
 
 export default class CommitCard {
   constructor(template) {
     this.template = template;
   }
 
-  renderCard(card) {
-    const divCard = document.createElement('div');
-    divCard.className = 'card';
-    divCard.append(this.fillTemplate(card).cloneNode(true));
-    return divCard;
+  renderCard(apiData) {
+    return this.fillTemplate(apiData);
   }
 
-  fillTemplate(obj) {
-    const template = this.template.content;
-    const link = template.firstElementChild.setAttribute('href', obj.commit.url);
-    const date  = template.firstElementChild.children[0].innerText = this._switchDate(obj.commit.committer.date);
-    const pic = template.firstElementChild.children[1].children[0].setAttribute('src', obj.author.avatar_url);
-    const name = template.firstElementChild.children[1].children[1].children[0].innerText = obj.commit.committer.name;
-    const email = template.firstElementChild.children[1].children[1].children[1].innerText =  obj.commit.committer.email;
-    const text = template.firstElementChild.children[2].textContent = obj.commit.message;
-    return template
+  fillTemplate(gitHubData) {
+    const gitCard = this.template.content.children.namedItem('js-card');
+    const link = gitCard.children.namedItem('js-link');
+    link.setAttribute('href', gitHubData.commit.url);
+    link.children.namedItem('js-date').innerText = this._switchDate(gitHubData.commit.committer.date);
+    link.children.namedItem('js-container').children.namedItem('js-pic').setAttribute('src', gitHubData.author.avatar_url);
+    link.children.namedItem('js-container').children.namedItem('js-name-container').children.namedItem('js-name').innerText = gitHubData.commit.committer.name;
+    link.children.namedItem('js-container').children.namedItem('js-name-container').children.namedItem('js-email').innerText = gitHubData.commit.committer.email;
+    link.children.namedItem('js-text').textContent = gitHubData.commit.message;
+   
+    return gitCard.cloneNode(true);
   }
 
-  // toDo сделать базовый класс для карточки, добавить все манипуляции с датами или сдлеать общние функции.
   _switchDate(commitedDate) {
     const date = commitedDate.split('').slice(0, 10).join('').split('-');
     const switchedDate = [];
@@ -33,40 +32,40 @@ export default class CommitCard {
       }
       if (index === 1) {
         switch(item) {
-          case '01': item = 'января,';
+          case '01': item = `${TRANSLATED_WORDS.months.jan},`;
           switchedDate.unshift(item);
           break;
-          case '02': item = 'февраля,';
+          case '02': item = `${TRANSLATED_WORDS.months.feb},`;
           switchedDate.unshift(item);
           break;
-          case '03': item = 'марта,';
+          case '03': item = `${TRANSLATED_WORDS.months.mar},`;
           switchedDate.unshift(item);
           break;
-          case '04': item = 'апреля,';
+          case '04': item = `${TRANSLATED_WORDS.months.apr},`;
           switchedDate.unshift(item);
           break;
-          case '05': item = 'мая,';
+          case '05': item = `${TRANSLATED_WORDS.months.may},`;
           switchedDate.unshift(item);
           break;
-          case '06': item = 'июня,';
+          case '06': item = `${TRANSLATED_WORDS.months.jun},`;
           switchedDate.unshift(item);
           break;
-          case '07': item = 'июля,';
+          case '07': item = `${TRANSLATED_WORDS.months.jul},`;
           switchedDate.unshift(item);
           break;
-          case '08': item = 'августа,';
+          case '08': item = `${TRANSLATED_WORDS.months.aug},`;
           switchedDate.unshift(item);
           break;
-          case '09': item = 'сентября,';
+          case '09': item = `${TRANSLATED_WORDS.months.sep},`;
           switchedDate.unshift(item);
           break;
-          case '10': item = 'октября,';
+          case '10': item = `${TRANSLATED_WORDS.months.oct},`;
           switchedDate.unshift(item);
           break;
-          case '11': item = 'ноября,';
+          case '11': item = `${TRANSLATED_WORDS.months.nov},`;
           switchedDate.unshift(item);
           break;
-          case '12': item = 'декабря,';
+          case '12': item = `${TRANSLATED_WORDS.months.dec},`;
           switchedDate.unshift(item);
           break;
         }

@@ -3,98 +3,113 @@
 // Полученные от NewsAPI данные должны приводить к обновлению хранилища, а список карточек отображать полученные данные на странице.
 // Кроме этого у класса SearchInput должны быть методы для валидации формы поиска и методы, управляющие работой кнопки сабмита.
 
-import { NEWS_API_KEY } from '../constants/NEWS_API_KEY';
-import { getCurrentDate } from '../utils/getCurrentDate';
-import { getPreviousDate } from '../utils/getPreviousDate';
+import { ERROR_MESSAGES } from '../constants/ERROR_MESSAGES';
 
 export default class SearchInput {
-
-  constructor(domElement, dependencies = {}) {
+  constructor(domElement, newsCardList, validation, newsApi, dataStorage) {
     this.domElement = domElement;
-    this.dependencies = dependencies;
-
-    this.addEventListener = this.addEventListener.bind(this);
-    this.getFormValue = this.getFormValue.bind(this);
-    this.activateError = this.activateError.bind(this);
-
-    if (this.dependencies.Validation) {
-      this.validation = new this.dependencies.Validation(this.domElement);
-    }
-    if (this.dependencies.DataStorage) {
-      this.dataStorage = new this.dependencies.DataStorage();
-    }
+    this.newsCardList = newsCardList;
+    this.validation = validation;
+    this.newsApi = newsApi;
+    this.dataStorage = dataStorage;
+    this.renderNewsCard = this.renderNewsCard.bind(this);
   }
 
   addEventListener(...args) {
     this.domElement.addEventListener(...args);
   }
 
-  async saveApiData() {
-    try {
-      const title = this.getFormValue();
-      if (this.dependencies.NewsApi && title !== false) {
-        const newsApi =  new this.dependencies.NewsApi(NEWS_API_KEY, title, getPreviousDate(7), getCurrentDate());
-        this.activatePreloader();
-        const newsList = await newsApi.getNews();
-        if (newsList.totalResults === 0) {
-          this.activateNotFound();
-          this.deactivatePreloader();
-        } else {
-          this.dataStorage.save(title, newsList);
-          this.clearInput(); 
-          this.deactivatePreloader()
-        }
-      } else {
-        this.activateError();
-        throw new Error('пустой запрос');
-      }
-    } catch (error) {
-      this.deactivatePreloader();
-      throw new Error(error);
+  renderNewsCard() {
+    event.preventDefault();
+    const keyWord = this._getFormValue();
+    if (keyWord) {
+      this._toggleNotFoundblock(false);
+      this.newsCardList.hideList();
+      this._togglePreloaderBlock(true);
+      this._toggleForm(false);
+      this._saveApiData(keyWord);
     }
   }
 
-  getFormValue() {
-    this.deactivateError()
+  async _saveApiData(keyWord) {
+      try {
+        const result = await this.newsApi.getNews(keyWord);
+        if (result && result.totalResults !== 0) {
+          this.dataStorage.save(keyWord, result);
+          this.newsCardList.renderList(false);
+        } else {
+          this._toggleNotFoundblock(true, false);
+        }
+      } catch (err) {
+        console.error(err);
+        this._toggleNotFoundblock(true, true);
+      } finally {
+        this._togglePreloaderBlock(false);
+        this._toggleForm(true);
+      }
+  }
+
+  _getFormValue() {
+    this._toggleErrorBlock(false);
     const result = this.validation.sendForm();
     if (!result) {
-      return false;
+      this._toggleErrorBlock(true);
     } else {
       this.dataStorage.deletePreviousData();
-      return result;
+    }
+    this._clearInput();
+    return result;
+  }
+
+  _toggleErrorBlock(isActivated) {
+    if (isActivated) {
+      const validateErrorTemplate = document.querySelector('#js-error-message').content;
+      this.domElement.before(validateErrorTemplate.cloneNode(true));
+    } else {
+      if (this.domElement.previousElementSibling.classList.contains('error-message')) {
+        this.domElement.previousElementSibling.remove();
+      }
     }
   }
 
-  clearInput() {
+  _togglePreloaderBlock(isActivated) {
+    const preloaderBlock = document.querySelector('#js-loading-block');
+    if (isActivated) {
+      const preloaderTemplate = document.querySelector('#js-loading').content;
+      preloaderBlock.append(preloaderTemplate.cloneNode(true));
+    } else {
+      preloaderBlock.firstElementChild.remove();
+    }
+  }
+
+  _toggleForm(isActivated) {
+    if(isActivated) {
+      this.domElement.elements.namedItem('js-bttn').disabled = false;
+    } else {
+      this.domElement.elements.namedItem('js-bttn').disabled = true;
+    }
+  }
+
+  _toggleNotFoundblock(isActivated, isServerIssue) {
+    const notFoundBlock = document.querySelector('#js-not-found-block');
+    if (isActivated) {
+      const notFoundBlockTemplate = document.querySelector('#js-not-found').content;
+      if (isServerIssue) {
+        notFoundBlockTemplate.children.namedItem('js-not-found-container').children.namedItem('js-not-found-title').textContent = ERROR_MESSAGES.userErrors.disconect.title;
+        notFoundBlockTemplate.children.namedItem('js-not-found-container').children.namedItem('js-not-found-text').textContent = ERROR_MESSAGES.userErrors.disconect.text;
+      } else {
+        notFoundBlockTemplate.children.namedItem('js-not-found-container').children.namedItem('js-not-found-title').textContent =  ERROR_MESSAGES.userErrors.notfound.title;
+        notFoundBlockTemplate.children.namedItem('js-not-found-container').children.namedItem('js-not-found-text').textContent =  ERROR_MESSAGES.userErrors.notfound.text;
+      }
+      notFoundBlock.append(notFoundBlockTemplate.cloneNode(true));
+    } else {
+      if (notFoundBlock.firstElementChild) {
+        notFoundBlock.firstElementChild.remove();
+      }
+    }
+  }
+
+  _clearInput() {
     this.domElement.elements.query.value = '';
-  }
-
-  activateError() {
-    const error = document.querySelector('.error-message')
-    error.classList.add('error-message_active')
-  }
-
-  deactivateError() {
-    const error = document.querySelector('.error-message')
-    error.classList.remove('error-message_active')
-  }
-
-  activateNotFound() {
-    const notFound = document.querySelector('.not-found');
-    notFound.classList.add('not-found_active');
-  }
-
-  deactivateNotfount() {
-    const notFound = document.querySelector('.not-found');
-    notFound.classList.remove('not-found_active');
-  }
-
-  activatePreloader() {
-    const preloader = document.querySelector('.loading')
-    preloader.classList.add('loading_active')
-  }
-  deactivatePreloader() {
-    const preloader = document.querySelector('.loading')
-    preloader.classList.remove('loading_active')
   }
 }

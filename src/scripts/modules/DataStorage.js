@@ -1,4 +1,5 @@
 // Класс DataStorage предоставляет интерфейс для работы с локальным хранилищем браузера.
+import { ERROR_MESSAGES } from '../constants/ERROR_MESSAGES';
 
 export default class DataStorage {
 
@@ -19,10 +20,9 @@ constructor() {
   getSavedNews() {
     const savedNews = JSON.parse(localStorage.getItem('newsList'));
     if (savedNews !== null || savedNews !== undefined || savedNews !== '') {
-      console.log('saved', savedNews);
       return savedNews;
     } 
-    throw new Error('Нет даннных в хранилище');
+    throw new Error(`${ERROR_MESSAGES.devErroros.noData}`);
   }
 
   getSavedTitle() {
@@ -30,7 +30,7 @@ constructor() {
     if (title !== null || title !== undefined || title !== '') {
       return title;
     } 
-    throw new Error('Нет даннных в хранилище');
+    throw new Error(`${ERROR_MESSAGES.devErroros.noData}`);
   }
 
   getSavedNewsCount() {
@@ -38,7 +38,7 @@ constructor() {
     if ( newsCount !== '' && Number.isInteger(newsCount)) {
       return newsCount
     }
-    throw new Error('Нет даннных в хранилище');
+    throw new Error(`${ERROR_MESSAGES.devErroros.noData}`);
   }
 
   deletePreviousData() {

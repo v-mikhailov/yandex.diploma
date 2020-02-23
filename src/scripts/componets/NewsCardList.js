@@ -1,22 +1,19 @@
-import { data } from "flickity";
 
 // класс списка карточек новостей
 
 export default class NewsCardList {
-  constructor(domElement, dependencies = {}) {
+  constructor(domElement, dataStorage, newsCard) {
     this.domElement = domElement;
-    this.showMoreBttn = this.domElement.lastElementChild;
-    this.dependencies = dependencies;
+    this.dataStorage = dataStorage;
+    this.newsCard = newsCard;
     this._counter = 3; /* открыте новостных карточек по три штуки */
 
-    if (this.dependencies.DataStorage) {
-      this.dataStorage = new this.dependencies.DataStorage();
-    }
-    if (this.dependencies.NewsCard) {
-      this.newsCard = new this.dependencies.NewsCard(document.querySelector('#js-newsCard'));
-    }
-
     this.renderList = this.renderList.bind(this);
+    this.showMoreCards = this.showMoreCards.bind(this);
+  }
+
+  addEventListener(...args) {
+    this.domElement.children.namedItem('show-more-bttn').addEventListener(...args);
   }
 
   renderList(isShowMoreBttn) {
@@ -61,11 +58,11 @@ export default class NewsCardList {
     })
   }
 
-  addEventListener(...args) {
-    this.domElement.addEventListener(...args);
-  }
-
   removeShowMoreBttn() {
     this.showMoreBttn.remove();
+  }
+
+  showMoreCards() {
+    this.renderList(true);
   }
 }

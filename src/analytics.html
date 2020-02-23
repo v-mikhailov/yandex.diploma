@@ -31,10 +31,6 @@
               <li class="news__menu-item"><a href="./analytics.html" class="link link_color_gray">Аналитика</a></li>
             </ul>
           </nav>
-          <h2 class="news__title">Вы спроисили:</h2>
-          <span class="news__title news__current-news">«Путешествия»</span>
-          <p class="news__count">Новостей за неделю: <span class="news__count news__number">34 324</span></p>
-          <p class="news__count">Упоминаний в заголовках: <span class="news__count news__number">235</span></p>
         </div>
       </section>
       <section class="analytics-table">
@@ -52,23 +48,9 @@
             <li class="analytics-table__ruler-item">100</li>
           </ul>
           <div class="analytics-table__flex-container">
-            <ul class="analytics-table__items-list analytics-table__items-list_position_reverse" id="js-week">
-              <li class="analytics-table__day">19, пн</li>
-              <li class="analytics-table__day">20, вт</li>
-              <li class="analytics-table__day">21, ср</li>
-              <li class="analytics-table__day">22, чт</li>
-              <li class="analytics-table__day">23, пт</li>
-              <li class="analytics-table__day">24, сб</li>
-              <li class="analytics-table__day">25, вс</li>
+            <ul class="analytics-table__items-list analytics-table__items-list_position_reverse" id="js-week-ul">
             </ul>
             <ul class="analytics-table__items-list" id="js-table-data">
-              <li class="analytics-table__cell analytics-table__cell_day_mon">0</li>
-              <li class="analytics-table__cell analytics-table__cell_day_tue">0</li>
-              <li class="analytics-table__cell analytics-table__cell_day_wed">0</li>
-              <li class="analytics-table__cell analytics-table__cell_day_thu">0</li>
-              <li class="analytics-table__cell analytics-table__cell_day_fri">0</li>
-              <li class="analytics-table__cell analytics-table__cell_day_sat">0</li>
-              <li class="analytics-table__cell analytics-table__cell_day_sun">0</li>
             </ul>
           </div>
           <ul class="analytics-table__ruler">
@@ -101,6 +83,30 @@
       </div>
     </footer>
   </div>
+  <template id="js-title-block">
+    <h2 class="news__title">Вы спроисили:</h2>
+    <span class="news__title news__current-news" id="js-news">«Путешествия»</span>
+    <p class="news__count" id='js-week'>Новостей за неделю: <span class="news__count news__number" id="js-news-for-week">34 324</span></p>
+    <p class="news__count" id="js-mention">Упоминаний в заголовках: <span class="news__count news__number" id="js-key-words">235</span></p>
+  </template>
+  <template id='js-week-days'>
+    <li class="analytics-table__day">19, пн</li>
+    <li class="analytics-table__day">20, вт</li>
+    <li class="analytics-table__day">21, ср</li>
+    <li class="analytics-table__day">22, чт</li>
+    <li class="analytics-table__day">23, пт</li>
+    <li class="analytics-table__day">24, сб</li>
+    <li class="analytics-table__day">25, вс</li>
+  </template>
+  <template id='js-news-count'>
+    <li class="analytics-table__cell analytics-table__cell_day_mon">0</li>
+    <li class="analytics-table__cell analytics-table__cell_day_tue">0</li>
+    <li class="analytics-table__cell analytics-table__cell_day_wed">0</li>
+    <li class="analytics-table__cell analytics-table__cell_day_thu">0</li>
+    <li class="analytics-table__cell analytics-table__cell_day_fri">0</li>
+    <li class="analytics-table__cell analytics-table__cell_day_sat">0</li>
+    <li class="analytics-table__cell analytics-table__cell_day_sun">0</li>
+  </template>
   <script src="<%=htmlWebpackPlugin.files.chunks.analytics.entry%>"></script>
 </body>
 </html>

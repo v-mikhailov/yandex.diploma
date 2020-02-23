@@ -1,25 +1,24 @@
 // Класс карточки новости
+import { TRANSLATED_WORDS } from '../constants/TRANSLATED_WORDS';
 
 export default class NewsCard {
   constructor(template) {
     this.template = template;
+    this.renderCard = this.renderCard.bind(this);
   }
   
   renderCard(newsObj) {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.append(this.fillTemplate(newsObj).content.cloneNode(true));
-    return card;
+    return this._fillTemplate(newsObj);
   }
 
-  fillTemplate(newsObj) {
-    const cardLink = this.template.content.firstElementChild;
+  _fillTemplate(newsObj) {
+    const cardTemplate = this.template.content.children.namedItem('js-card');
+    const cardLink = cardTemplate.children.namedItem('js-link');
     cardLink.setAttribute('href', newsObj.url);
-    const imgSrc = cardLink.firstElementChild;
-    imgSrc.setAttribute('src', newsObj.urlToImage);
-    cardLink.children[1].children.forEach(elem => {
+    cardLink.children.namedItem('js-img').setAttribute('src', newsObj.urlToImage);
+    cardLink.children.namedItem('js-card-container').children.forEach(elem => {
       if (elem.className === 'card__date') {
-        elem.textContent = this.switchDate(newsObj.publishedAt);
+        elem.textContent = this._switchDate(newsObj.publishedAt);
       }
       if (elem.className === 'card__title') {
         elem.textContent = newsObj.title;
@@ -31,11 +30,10 @@ export default class NewsCard {
         elem.textContent = newsObj.source.name;
       }
     });
-    return this.template;
+    return cardTemplate.cloneNode(true);
   }
   
-// toDo сделать базовый класс для карточке, добавить все манипуляции с датами или сдлеать общние функции.
-  switchDate(puplicationDate) {
+  _switchDate(puplicationDate) {
     const date = puplicationDate.split('').slice(0, 10).join('').split('-');
     const switchedDate = [];
     date.map(function(item, index) {
@@ -44,40 +42,40 @@ export default class NewsCard {
       }
       if (index === 1) {
         switch(item) {
-          case '01': item = 'января,';
+          case '01': item = `${TRANSLATED_WORDS.months.jan},`;
           switchedDate.unshift(item);
           break;
-          case '02': item = 'февраля,';
+          case '02': item = `${TRANSLATED_WORDS.months.feb},`;
           switchedDate.unshift(item);
           break;
-          case '03': item = 'марта,';
+          case '03': item = `${TRANSLATED_WORDS.months.mar},`;
           switchedDate.unshift(item);
           break;
-          case '04': item = 'апреля,';
+          case '04': item = `${TRANSLATED_WORDS.months.apr},`;
           switchedDate.unshift(item);
           break;
-          case '05': item = 'мая,';
+          case '05': item = `${TRANSLATED_WORDS.months.may},`;
           switchedDate.unshift(item);
           break;
-          case '06': item = 'июня,';
+          case '06': item = `${TRANSLATED_WORDS.months.jun},`;
           switchedDate.unshift(item);
           break;
-          case '07': item = 'июля,';
+          case '07': item = `${TRANSLATED_WORDS.months.jul},`;
           switchedDate.unshift(item);
           break;
-          case '08': item = 'августа,';
+          case '08': item = `${TRANSLATED_WORDS.months.aug},`;
           switchedDate.unshift(item);
           break;
-          case '09': item = 'сентября,';
+          case '09': item = `${TRANSLATED_WORDS.months.sep},`;
           switchedDate.unshift(item);
           break;
-          case '10': item = 'октября,';
+          case '10': item = `${TRANSLATED_WORDS.months.oct},`;
           switchedDate.unshift(item);
           break;
-          case '11': item = 'ноября,';
+          case '11': item = `${TRANSLATED_WORDS.months.nov},`;
           switchedDate.unshift(item);
           break;
-          case '12': item = 'декабря,';
+          case '12': item = `${TRANSLATED_WORDS.months.dec},`;
           switchedDate.unshift(item);
           break;
         }

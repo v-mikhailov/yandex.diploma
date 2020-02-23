@@ -3,10 +3,15 @@ import CommitCardList from './componets/CommitCardList';
 import CommitCard from './componets/CommitCard';
 import GitHubApi from './modules/GitHubApi';
 
-const commitCardList = new CommitCardList(document.querySelector('.carousel'), {CommitCard, GitHubApi});
+import { GITHUB_API_KEY } from './constants/GITHUB_API_KEY';
+
+const commitCard = new CommitCard(document.querySelector('#js-gitCard'));
+const gitHubApi = new GitHubApi(GITHUB_API_KEY);
+const commitCardList = new CommitCardList(document.querySelector('.carousel'), commitCard, gitHubApi);
+
 (async () => {
   try {
-    const result = await commitCardList.render();
+    await commitCardList.render();
     const flkty = new Flickity('.carousel', {
       cellAlign: 'left',
       contain: true,

@@ -1,50 +1,30 @@
 import "../blocks/main/style.css";
 /* componets */
-import Validation from './componets/Validation';
 import SearchInput from './componets/SearchInput';
 import NewsCardList from './componets/NewsCardList';
 import NewsCard from './componets/NewsCard';
 /* modules */
 import NewsApi from './modules/NewsApi';
 import DataStorage from './modules/DataStorage';
+import Validation from './modules/Validation';
 /* utils */
+import { NEWS_API_KEY } from './constants/NEWS_API_KEY';
+import { getCurrentDate } from './utils/getCurrentDate';
+import { getPreviousDate } from './utils/getPreviousDate';
 
-const newsCardList =  new NewsCardList(document.querySelector('.result'),
-  {
-    DataStorage,
-    NewsCard,
-  }
-);
 
-const searchInput = new SearchInput(document.forms.searchForm,
-{
-  Validation,
-  NewsApi,
-  DataStorage,
-}
-);
+const searchForm = document.forms.searchForm;
 
-searchInput.addEventListener('submit', event => {
-  event.preventDefault();
-  (async () => {
-    try {
-      newsCardList.hideList();
-      searchInput.deactivateNotfount();
-      await searchInput.saveApiData();
-      newsCardList.renderList(false);
-    } catch (error) {
-      searchInput.activateNotFound();
-      throw new Error(error)
-    }
-  })();
-});
+const dataStorage = new DataStorage();
+const newsCard = new NewsCard(document.querySelector('#js-newsCard'));
+const validation = new Validation(searchForm);
+const newsApi = new NewsApi(NEWS_API_KEY, getPreviousDate(7), getCurrentDate());
 
-newsCardList.addEventListener('click', event => {
-  if (event.target.className === 'button button_place_result') {
-    newsCardList.renderList(true);
-  }
-})
+const newsCardList =  new NewsCardList(document.querySelector('.result'), dataStorage, newsCard);
+const searchInput = new SearchInput(searchForm, newsCardList, validation, newsApi, dataStorage);
 
+searchInput.addEventListener('submit', searchInput.renderNewsCard);
+newsCardList.addEventListener('click', newsCardList.showMoreCards);
 
 
 

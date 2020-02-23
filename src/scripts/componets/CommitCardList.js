@@ -1,20 +1,11 @@
 // класс списка карточек коммитов
-import { GITHUB_API_KEY } from '../constants/GITHUB_API_KEY';
 
 export default class CommitCardList {
-  constructor(domElem, dependencies = {}) {
+  constructor(domElem, commitCard, gitHubApi) {
     this.cardListEl = domElem;
-    this.dependencies = dependencies;
-
-    if (this.dependencies.CommitCard) {
-      this.commitCard = new this.dependencies.CommitCard(document.querySelector('#js-gitCard'));
-    }
-
-    if (this.dependencies.GitHubApi) {
-      this.gitHubApi = new this.dependencies.GitHubApi(GITHUB_API_KEY);
-    }
-
-   this._renderCardList = this._renderCardList.bind(this);
+    this.commitCard = commitCard;
+    this.gitHubApi = gitHubApi;
+    this._renderCardList = this._renderCardList.bind(this);
   }
 
   async render() {

@@ -8,13 +8,17 @@ export default class GitHubApi {
     if (data.ok) {
       return data.json();
     }
-    return Promise.reject(`Ошибка: ${data.status}`)
+    return Promise.reject(console.log(data.status))
   }
 
   async getCommits() {
-    const result = await fetch(this.url, {
-      method: 'GET',
-    })
-    return this.getResponseJson(result);
+    try {
+      const result = await fetch(this.url, {
+        method: 'GET',
+      })
+      return this.getResponseJson(result);
+    } catch(err) {
+      throw new Error(err);
+    }
   }
 }

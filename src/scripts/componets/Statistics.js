@@ -1,49 +1,45 @@
 // Класс, отвечающий за логику работы графиков со статистикой на странице аналитики.
 // Конструктор класса получает объект, содержащий текущее состояние локального браузерного хранилища.
+import { getPreviousDate } from '../utils/getPreviousDate';
+import { TRANSLATED_WORDS } from '../constants/TRANSLATED_WORDS';
 
 export default class Statistics {
-  constructor(titleBlock, dependencies = {}, utils = []) {
-    this.titleBlock = titleBlock;
-    this.dependencies = dependencies;
-    this.week = document.querySelector('#js-week');
-    this.tableData = document.querySelector('#js-table-data');
-    this.getPreviousDate = utils[0];
-    if (this.dependencies.DataStorage) {
-      this.dataStorage = new this.dependencies.DataStorage();
-    }
-
-
+  constructor(dataStorage) {  
+    this.dataStorage = dataStorage;
     this.allNews = this.dataStorage.getSavedNews();
     this.savedTitle = this.dataStorage.getSavedTitle()
-
     this.datesOfWeek = [];
   }
 
   renderStatistics() {
-    this._addTitle();
-    this._addSubtitle()
+    this._renderTitleBlock();
     this._renderDateColumn()
     this._renderWeekStat()
   }
 
-  _addTitle() {
+  _renderTitleBlock() {
+    const newsContainer = document.querySelector('.news__container');
     const title = this.savedTitle[0].toUpperCase() + this.savedTitle.slice(1);
-    this.titleBlock.textContent = `«${title}»`;
-  }
+    const titleBlock = document.querySelector('#js-title-block').content;
 
-  _addSubtitle() {
-    this.titleBlock.nextElementSibling.firstElementChild.textContent = this.dataStorage.getSavedNewsCount();
-    this.titleBlock.nextElementSibling.nextElementSibling.firstElementChild.textContent = this._countKeyWord(this.allNews);
+    titleBlock.children.namedItem('js-news').textContent = `«${title}»`;
+    titleBlock.children.namedItem('js-week').children.namedItem('js-news-for-week').innerText = this.dataStorage.getSavedNewsCount();
+    titleBlock.children.namedItem('js-mention').children.namedItem('js-key-words').innerText = this._countKeyWord(this.allNews);
+    newsContainer.append(titleBlock.cloneNode(true));
   }
 
   _renderDateColumn() {
+    const week = document.querySelector('#js-week-ul');
+    const days = document.querySelector('#js-week-days').content;
     for (let i = 0; i < 7; i++) {
-      const innerTextDay = this._switchDateFormat(i);
-      this.week.children[i].textContent = innerTextDay; 
+      days.children[i].textContent = this._switchDateFormat(i)
     }
+    week.append(days.cloneNode(true));
   }
 
   _renderWeekStat() {
+    const tableData = document.querySelector('#js-table-data');
+    const newsCountLiTempl = document.querySelector('#js-news-count').content;
     const datesArr = [];
     this.datesOfWeek.forEach(elem => {
       if (elem.length === 1) {
@@ -53,19 +49,20 @@ export default class Statistics {
         datesArr.push(elem);
       }
     })
-    this._calcProportion(datesArr);
+    this._calcProportion(datesArr, newsCountLiTempl);
+    tableData.append(newsCountLiTempl.cloneNode(true));
   } 
 
-  _calcProportion(arr) {
+  _calcProportion(arr, template) {
     let totalAmount = 0;
     arr.forEach((elem, index ) => {
-      const amount = this._setCellData(elem, index)
+      const amount = this._setCellData(elem, template.children[index])
       totalAmount = totalAmount + amount;
     })
-    this.tableData.children.forEach(elem => {
+    template.children.forEach(elem => {
       const percent = (elem.textContent / totalAmount) * 100;
       elem.style.width = `${percent}%`;
-    })
+   })
   }
 
   _countKeyWord(newsArr, isDescr) {
@@ -88,9 +85,8 @@ export default class Statistics {
   }
 
   _switchDateFormat(i) {
-    const date = this.getPreviousDate(i, true);
-    const dayOfWeek = date.getDay()
-    const rusDayOfWeek = this._translateDayOfWeek(dayOfWeek);
+    const date = getPreviousDate(i, true);
+    const rusDayOfWeek = this._translateDayOfWeek(date.getDay());
     const day = date.getDate();
     this.datesOfWeek.push(`${day}`);
     return `${day}, ${rusDayOfWeek}`
@@ -98,19 +94,19 @@ export default class Statistics {
 
   _translateDayOfWeek(dayOfWeek) {
     switch(dayOfWeek) {
-      case 0: return 'вс';
-      case 1: return 'пн';
-      case 2: return 'вт';
-      case 3: return 'ср';
-      case 4: return 'чт';
-      case 5: return 'пт';
-      case 6: return 'сб';
+      case 0: return TRANSLATED_WORDS.week.sun;
+      case 1: return TRANSLATED_WORDS.week.mon;
+      case 2: return TRANSLATED_WORDS.week.tue;
+      case 3: return TRANSLATED_WORDS.week.wed;
+      case 4: return TRANSLATED_WORDS.week.thu;
+      case 5: return TRANSLATED_WORDS.week.fri;
+      case 6: return TRANSLATED_WORDS.week.sat;
     }
   }
 
-  _setCellData(elem, index) {
+  _setCellData(elem, template) {
     const mention = this._dataForSpecificDay(elem, this.allNews);
-    this.tableData.children[index].textContent = mention;
+    template.textContent = mention;
     return mention;
   }
 

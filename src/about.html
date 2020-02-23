@@ -133,19 +133,21 @@
     </footer>
   </div>
   <template id="js-gitCard">
-    <a href="#" class="link">
-      <span class="card__date">14 августа, 2019</span>
-      <div class="card__container">
-        <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic">
-        <div class="card__name-container">
-          <h3 class="card__name">Антон Дмитриев</h3>
-          <span class="card__email">anton@yandex.ru</span>
+    <div class="card" id="js-card">
+      <a href="#" class="link" id="js-link">
+        <span class="card__date" id="js-date">14 августа, 2019</span>
+        <div class="card__container" id="js-container">
+          <img src="<%=require('./images/test-pic.jpg').default%>" alt="котик" class="card__pic" id="js-pic">
+          <div class="card__name-container" id="js-name-container">
+            <h3 class="card__name" id='js-name'>Антон Дмитриев</h3>
+            <span class="card__email" id="js-email">anton@yandex.ru</span>
+          </div>
         </div>
-      </div>
-       <p class="card__text">
-        You can install this plugin directly from NetBeans Plugin Portal: in NetBeans, open Tools > Plugins > Available plugins and find and install Emmet.
-      </p>
-    </a>
+         <p class="card__text" id="js-text">
+          You can install this plugin directly from NetBeans Plugin Portal: in NetBeans, open Tools > Plugins > Available plugins and find and install Emmet.
+        </p>
+      </a>
+    </div>
   </template>
 
   <script src="../node_modules/flickity/dist/flickity.pkgd.min.js"></script>
