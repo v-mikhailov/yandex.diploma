@@ -1,0 +1,27 @@
+@import url('./__text/error-message__text.css');
+@import url('./_active/error-message_active.css');
+
+.error-message {
+  display: none;
+  position: relative;
+
+  width: 240px;
+  height: 18px;
+  background-color: #eee;
+  border-radius: 5px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 13px;
+}
+
+.error-message:before {
+	content: ""; 
+	border: solid transparent;
+	position: absolute;
+ 	top: 100%;
+	left: 50%;
+	border-top-color: #eee;
+	border-width: 9px;
+	margin-left: -9px;
+}

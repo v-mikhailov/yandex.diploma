@@ -1,10 +1,11 @@
+@import url('./_active/result_active.css');
 @import url('./__title-container/result__title-container.css');
 @import url('./__title/result__title.css');
 @import url('./__subtitle/result__subtitle.css');
 @import url('./__grid-container/result__grid-container.css');
 
 .result {
-  display: block;
+  display: none;
   padding-top: 32px;
   padding-bottom: 44px;  
   box-sizing: border-box;

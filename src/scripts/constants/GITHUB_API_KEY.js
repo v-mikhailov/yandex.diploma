@@ -1,0 +1,1 @@
+export const GITHUB_API_KEY = 'https://api.github.com/repos/v-mikhailov/yandex.diploma/commits';
