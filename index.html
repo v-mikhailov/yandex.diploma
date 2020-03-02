@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Cервис для анализа происходящих в мире событий">
+  <meta name="author" content="Vladimir Mikhailov">
+  <link rel="stylesheet" href="styles/main.856d8d712d4cba1fa10d.css">
+  <link rel="icon" href="images/favicon.png" sizes="any" type="image/png">
+  <title>NewsAnalyzer</title>
+</head>
+<body class="body">
+  <div class="page-container">
+    <div class="background-container">
+      <header class="header header_border-color_white">
+        <span class="header__title"><a href="./index.html" class="link link_color_white">NewsAnalyzer</a></span>
+        <nav class="header__nav">
+          <ul class="header__menu-items">
+            <li class="header__menu-item header__menu-item_page_main"><a href="./index.html" class="link link__hover">Главная</a></li>
+            <li class="header__menu-item header__menu-item_page_main"><a href="./about.html" class="link link__hover">О проекте</a></li>
+          </ul>
+        </nav>
+      </header>
+      <section class="search">
+        <div class="search__container">
+          <h1 class="search__title">
+            Что в мире творится?
+          </h1>
+          <p class="search__text">
+            Введите в поиске любую тему и узнайте, насколько популярной она была в новостях за прошедшую неделю.
+          </p>
+          <form action="#" method="GET" class="search__form" name="searchForm" novalidate>
+            <input type="text" name="query" id="search__input" placeholder="Котики" required>
+            <button class="button button_place_search" id="button__submit" name="js-bttn">Искать</button>
+          </form>
+        </div>
+      </section>
+    </div>
+    <main>
+      <section id="js-loading-block">
+      </section>
+      <section id='js-not-found-block'>
+      </section>
+      <section class="result">
+        <div class="result__title-container">
+          <h2 class="result__title">Результаты поиска</h2>
+          <h3 class="result__subtitle"><a href="./analytics.html" class="link link_color_black" >Посмотреть аналитику</a></h3>
+        </div>
+        <div class="result__grid-container">
+        </div>
+        <button class="button button_place_result" name="show-more-bttn">Показать еще</button>
+      </section>
+      <section class="author">
+        <div class="author__flex-container">
+          <div class="author__pic"></div>
+          <div class="author__text-container">
+            <h2 class="author__title">Об авторе</h2>
+            <p class="author__text"> 
+              Это блок с описанием автора проекта.
+              Здесь следует указать, как вас зовут, чем вы занимаетесь,
+              какими технологиями разработки владеете.
+            </p>
+            <p class="author__text">
+              Также можно рассказать о процессе обучения в Практикуме,
+              чему вы тут научились, и чем можете помочь потенциальным заказчикам.
+              Если хотите, оставьте свои контакты: email и телефон.
+              Так заказчики смогут с вами связаться.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <nav class="footer__nav">
+          <ul class="footer__items">
+            <li class="footer__item"><a href="./index.html" class="link link__hover_page_analytics">Главная</a></li>
+            <li class="footer__item"><a href="./about.html" class="link link__hover_page_analytics">О проекте</a></li>
+            <li class="footer__item"><a href="https://praktikum.yandex.ru" class="link link__hover_page_analytics">Яндекс.Практикум</a></li>
+          </ul>
+        </nav>
+        <div class="footer__icons">
+          <a href="https://github.com/v-mikhailov"><img src="images/github.svg" alt="github icons"></a>
+          <a href="https://www.facebook.com/dekamka"><img src="images/facebook.svg" alt="facebook icons"></a>
+        </div>
+      </div>
+      <div class="footer__info-block">
+        <span class="footer__info">2019 Supersite.</span>
+        <span class="footer__copyright">Powered by <a href="https://newsapi.org/" class="link link_color_gray">Newsapi.org</a></span>
+      </div>
+    </footer>
+  </div>
+  <template id="js-newsCard">
+    <div class="card" id="js-card">
+      <a href="#" class="link" id="js-link">
+        <img src="www.vk.com" alt="" class="card__img" id="js-img">
+        <div class="card__container" id="js-card-container">
+          <span class="card__date">18 апреля, 2011</span>
+          <h2 class="card__title">Cake</h2>
+          <p class="card__text">The cake is a lie</p>
+          <span class="card__news-source">GLaDOS</span>
+        </div>
+      </a>
+    </div>
+  </template>
+  <template id="js-error-message">
+    <div class="error-message error-message_active">
+      <p class="error-message__text">Нужно ввести ключевое слово</p>
+    </div> 
+  </template>
+  <template id="js-loading">
+    <div class="loading loading_active">
+      <i class="circle-preloader"></i>
+      <h2 class="loading__text">Идет поиск новостей...</h2>
+    </div>
+  </template>
+  <template id="js-not-found">
+    <div class="not-found not-found_active" id="js-not-found-container">
+      <img src="images/not-found.svg" alt="иконка 'ничего не найдено'" class="not-found__img">
+      <h2 class="not-found__title" id='js-not-found-title'></h2>
+      <span class="not-found__text" id="js-not-found-text"></span>
+    </div>
+  </template>
+  <script src="scripts/main.550a0c0b3b42a3c3dcfc.js"></script>
+</body>
+</html>
