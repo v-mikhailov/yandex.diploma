@@ -1,4 +1,5 @@
 @import url('../../fonts/typo.css');
+@import url('../../../node_modules/flickity/dist/flickity.css');
 
 @import url('./clients/clients.css');
 @import url('./stack/stack.css');

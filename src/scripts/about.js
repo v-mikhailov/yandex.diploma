@@ -2,6 +2,7 @@ import '../blocks/about/about.css';
 import CommitCardList from './componets/CommitCardList';
 import CommitCard from './componets/CommitCard';
 import GitHubApi from './modules/GitHubApi';
+import Flickity from 'flickity';
 
 import { GITHUB_API_KEY } from './constants/GITHUB_API_KEY';
 
